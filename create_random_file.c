@@ -10,9 +10,9 @@ int main(int argc, char *argv[]) {
         long total_bytes = strtol(argv[2], &end, 10);
         char *buf = (char *) malloc( block_size * sizeof(char));
         
-        FILE *fp = fopen(filename, "w");
+        FILE *fp = fopen(argv[1], "w");
         long cur_bytes = 0;
-        while (cur _bytes < total_bytes){
+        while (cur_bytes < total_bytes){
             random_array(buf, block_size);
             fwrite(buf, 1, block_size, fp);
         }
