@@ -11,10 +11,11 @@ int main(int argc, char *argv[]) {
         char *buf = (char *) malloc( block_size * sizeof(char));
         
         FILE *fp = fopen(argv[1], "w");
-        long cur_bytes = 0;
-        while (cur_bytes < total_bytes){
+        
+        while (total_bytes > 0){
             random_array(buf, block_size);
             fwrite(buf, 1, block_size, fp);
+            total_bytes -= block_size;
         }
         fflush(fp);
         fclose(fp);
