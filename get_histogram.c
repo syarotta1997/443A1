@@ -8,7 +8,7 @@ int get_histogram(FILE *file_ptr, long hist[], int block_size, long *millisecond
     //todo - add error handling
     
     
-    bzero(hist, 26);
+    memset(hist, 0, sizeof(long)*26);
     
     ftime(&t);
     long now_in_ms = t.time * 1000 + t.millitm;
@@ -31,8 +31,11 @@ void calculate_occurance(char* buff, long hist[], int size){
     
             for (int i = 0; i < size; i ++){
                     char ch = buff[i];
-                    int index = (int)ch - 65;
-                    hist[index]+= 1;
+                    if (ch != '\0'){
+                        int index = (int)ch - 65;
+                        hist[index]+= 1;
+                    }
+                    
              }
     
 }
