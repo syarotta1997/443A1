@@ -19,10 +19,10 @@ int get_histogram(FILE *file_ptr, long hist[], int block_size, long *millisecond
             if (num_read > 0){
                 calculate_occurance(buf, hist, block_size);
             }
-            &total_bytes_read += num_read;
+            &total_bytes_read += (long)num_read;
     }
     ftime(&t);
-    &milliseconds = t.time * 1000 + t.millitm - now_in_ms;
+    &milliseconds = (long)(t.time * 1000 + t.millitm - now_in_ms);
     free(buf);
     return 0;
 }
