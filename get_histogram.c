@@ -8,14 +8,14 @@ int get_histogram(FILE *file_ptr, long hist[], int block_size, long *millisecond
     //todo - add error handling
     
     
-    bzero(hist);
+    bzero(hist, 26);
     
     ftime(&t);
     long now_in_ms = t.time * 1000 + t.millitm;
     while ( num_read >0 ){      
-            bzero(buf);
+            bzero(buf, block_size);
             num_read = fread(buf, 1, block_size, file_ptr);
-            if (num_read == 0 && total_bytes_read < )
+
             if (num_read > 0){
                 calculate_occurance(buf, hist, block_size);
             }
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
                                  block_size,
                                  &milliseconds,
                                  &filelen);
-        assert(! ret < 0)
+        assert(! ret < 0);
 
         printf("Computed the histogram in %d ms.\n", milliseconds);
         for(int i=0; i < 26; i++) {
