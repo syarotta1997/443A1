@@ -63,11 +63,11 @@ int main(int argc, char *argv[]) {
                                  block_size,
                                  &milliseconds,
                                  &filelen);
-        assert(! ret < 0);
+        assert(! (ret < 0));
 
-        printf("Computed the histogram in %d ms.\n", milliseconds);
+        printf("Computed the histogram in %ld ms.\n", milliseconds);
         for(int i=0; i < 26; i++) {
-            printf("%c : %d\n", 'A' + i, hist[i]);
+            printf("%c : %ld\n", 'A' + i, hist[i]);
         }
         printf("Data rate: %f Bps\n", (double)filelen/milliseconds * 1000);
         
