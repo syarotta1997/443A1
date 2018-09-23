@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
         free(buf);
         
         now_in_ms = (t.time * 1000 + t.millitm) - now_in_ms;
-        printf("Finished writing to file in %.2l", &now_in_ms);
+        printf("Finished writing to file in %l. \n", now_in_ms);
         
         return 0;
         
