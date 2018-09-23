@@ -37,3 +37,5 @@ int get_histogram(
     int block_size, 
     long *milliseconds, 
     long *total_bytes_read);
+
+void calculate_occurance(char* buff, long hist[]);
