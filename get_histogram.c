@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
             exit(1);
         }
         char *end;
-        int block_size = strtoi(argv[2], &end, 10);
+        int block_size = (int)strtol(argv[2], &end, 10);
         long hist[26];
         long milliseconds;
         long filelen;

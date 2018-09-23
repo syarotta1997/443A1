@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/timeb.h>
+#include <assert.h>
 
 /**
  * populate a random array (which is already
