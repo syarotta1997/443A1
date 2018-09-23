@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
         long total_bytes = strtol(argv[2], &end, 10);
         char *buf = (char *) malloc( block_size * sizeof(char));
         
+        ftime(&t);
         long now_in_ms = t.time * 1000 + t.millitm;
         
         FILE *fp = fopen(argv[1], "w");
@@ -21,13 +22,15 @@ int main(int argc, char *argv[]) {
             fwrite(buf, 1, block_size, fp);
             total_bytes -= block_size;
         }
+        ftime(&t);
+        now_in_ms = (t.time * 1000 + t.millitm) - now_in_ms;
+        printf("BLOCK SIZE: %d \n", (int)block_size);
+        printf("TIME %ld milliseconds \n", now_in_ms);
+        
         fflush(fp);
         fclose(fp);
         free(buf);
-        
-        now_in_ms = (t.time * 1000 + t.millitm) - now_in_ms;
-        printf("BLOCK SIZE: %d \n", (int)block_size);
-        printf("TIME %lf \n", now_in_ms);
+
         
         return 0;
         
