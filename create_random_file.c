@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
         
         now_in_ms = (t.time * 1000 + t.millitm) - now_in_ms;
         printf("BLOCK SIZE: %d \n", (int)block_size);
-        printf("TIME %l \n", now_in_ms);
+        printf("TIME %ld \n", now_in_ms);
         
         return 0;
         
