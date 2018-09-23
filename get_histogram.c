@@ -50,7 +50,10 @@ int main(int argc, char *argv[]) {
         long filelen;
         FILE *file_ptr = fopen(argv[1], "r");
         
-        
+        if (file_ptr == NULL){
+            perror("Cannot open file: ");
+            return -1;
+        }
 
         /**
          * Compute the histogram using 2K buffers
@@ -70,5 +73,7 @@ int main(int argc, char *argv[]) {
         
         fflush(file_ptr );
         fclose(file_ptr );
+        
+        return 0;
 
 }
