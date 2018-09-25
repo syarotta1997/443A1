@@ -20,6 +20,7 @@ int main(int argc, char *argv[]) {
         while (total_bytes > 0){
             random_array(buf, block_size);
             fwrite(buf, 1, block_size, fp);
+            fflush(fp);
             total_bytes -= block_size;
         }
         ftime(&t);
@@ -27,7 +28,7 @@ int main(int argc, char *argv[]) {
         printf("BLOCK SIZE: %d \n", (int)block_size);
         printf("TIME %ld milliseconds \n", now_in_ms);
         
-        fflush(fp);
+        
         fclose(fp);
         free(buf);
 
