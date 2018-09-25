@@ -8,6 +8,6 @@ print("NOW TESTING DISK WRITE ......\n")
 for i in range (0, len(blocks)):
     #calling create_random_file with fixed 5MB file size using different
     #bloci sizes defined in list
-    subprocess.call(["create_random_file", "file" ,"5000000",str(blocks[i])])
+    subprocess.call(["create_random_file", "file"+str(i) ,"5000000",str(blocks[i])])
 print ("\nNOW TESTING DISK READ ......\n")
     
