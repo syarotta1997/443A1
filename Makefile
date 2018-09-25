@@ -10,4 +10,4 @@ get_histogram: get_histogram.c library.o
 	gcc -c -Wall -g -o $@ $<
 
 clean:
-	rm -f *.o create_random_file get_histogram
+	rm -f *.o create_random_file get_histogram file1 file2 file3 file4 file5 file6 file7 file8 file9 file10
