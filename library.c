@@ -2,7 +2,6 @@
 
 void random_array(char* array, long bytes){
     for (int i = 0; i < (int)bytes ; i++){
-        *(array+i) =  'A' + (rand() % 26);
-        printf((char)array[i]);
+        arrray[i] =  'A' + (rand() % 26);
     }
 }
