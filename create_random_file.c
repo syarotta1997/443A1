@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
                 fwrite(buf, 1, block_size, fp);     
                 total_bytes -= block_size;
             }
+            fflush(fp);  
                    
         }
         ftime(&t);
@@ -35,7 +36,7 @@ int main(int argc, char *argv[]) {
         printf("BLOCK SIZE: %d \n", (int)block_size);
         printf("TIME %ld milliseconds \n", now_in_ms);
         
-        fflush(fp);  
+        
         fclose(fp);
         free(buf);
 
