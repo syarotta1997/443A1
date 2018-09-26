@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
         FILE *fp = fopen(argv[1], "w");
         
         while (total_bytes > 0){
-            memset(buff, '\0', block_size);
+            memset(buf, '\0', block_size);
             random_array(buf, block_size);
             if (total_bytes < block_size){
                 fwrite(buf, 1, total_bytes, fp);
