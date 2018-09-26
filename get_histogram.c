@@ -72,6 +72,9 @@ int main(int argc, char *argv[]) {
         for(int i=0; i < 26; i++) {
             printf("%c : %ld\n", 'A' + i, hist[i]);
         }
+        printf("BLOCK SIZE: %d bytes\n", block_size);
+        printf("TOTAL BYTES: %ld bytes\n", filelen);
+        printf("TIME: %ld \n", milliseconds);
         printf("Data rate: %f Bps\n", (double)filelen/milliseconds * 1000);
         
         fclose(file_ptr );
