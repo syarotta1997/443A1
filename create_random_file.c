@@ -18,10 +18,17 @@ int main(int argc, char *argv[]) {
         FILE *fp = fopen(argv[1], "w");
         
         while (total_bytes > 0){
+            bzero(buf, block_size);
             random_array(buf, block_size);
-            fwrite(buf, 1, block_size, fp);
-            fflush(fp);
-            total_bytes -= block_size;
+            if (total_bytes < block_size){
+                fwrite(buf, 1, total_bytes, fp);
+                total_bytes = 0;
+            }
+            else{
+                fwrite(buf, 1, block_size, fp);     
+                total_bytes -= block_size;
+            }
+            fflush(fp);         
         }
         ftime(&t);
         now_in_ms = (t.time * 1000 + t.millitm) - now_in_ms;
