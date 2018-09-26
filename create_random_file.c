@@ -33,8 +33,9 @@ int main(int argc, char *argv[]) {
         }
         ftime(&t);
         now_in_ms = (t.time * 1000 + t.millitm) - now_in_ms;
-        printf("BLOCK SIZE: %d \n", (int)block_size);
-        printf("TIME %ld milliseconds \n", now_in_ms);
+        printf("FILE = %s \n", argv[1]);
+        printf("BLOCK SIZE = %d \n", (int)block_size);
+        printf("TIME = %ld milliseconds \n", now_in_ms);
         
         
         fclose(fp);
