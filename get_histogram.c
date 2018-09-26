@@ -74,7 +74,6 @@ int main(int argc, char *argv[]) {
         }
         printf("Data rate: %f Bps\n", (double)filelen/milliseconds * 1000);
         
-        fflush(file_ptr );
         fclose(file_ptr );
         
         return 0;
