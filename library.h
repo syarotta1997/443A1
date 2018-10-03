@@ -38,5 +38,5 @@ int get_histogram(
     int block_size, 
     long *milliseconds, 
     long *total_bytes_read);
-
+//checks the number of occurence of alphaberical letters and records into an array
 void calculate_occurance(char* buff, long hist[], int size);

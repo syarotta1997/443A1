@@ -1,12 +1,25 @@
 #include "library.h"
-
+/**
+ * file_ptr : the file pointer, ready to be read from.
+ * hist: an array to hold 26 long integers.  hist[0] is the
+ *       number of 'A', and hist[1] is the number of 'B', etc.
+ * block_size: the buffer size to be used.
+ * milliseconds: time it took to complete the file scan
+ * total_bytes_read: the amount data in bytes read
+ *
+ * returns: -1 if there is an error.
+ */
 int get_histogram(FILE *file_ptr, long hist[], int block_size, long *milliseconds, long *total_bytes_read){
+
+    //checking if file is valid first
+    if (file_ptr == NULL){
+            perror("Cannot open file: ");
+            return -1;
+     }
+    
     struct timeb t;
     char *buf = (char*) malloc( block_size * sizeof(char));
     int num_read = 1;
-    
-    //todo - add error handling
-    
     
     memset(hist, 0, sizeof(long)*26);
     
@@ -24,20 +37,26 @@ int get_histogram(FILE *file_ptr, long hist[], int block_size, long *millisecond
     ftime(&t);
     *milliseconds = (long)(t.time * 1000 + t.millitm - now_in_ms);
     free(buf);
-    return 0;
+    //checks if all bytes are read from file
+    fseek(file_ptr, 0, SEEK_END);
+    long bytes = ftell(file_ptr);
+    rewind(file_ptr);
+    
+    if (bytes == *total_bytes_read)
+        return 0;
+    else
+        return -1;
 }
 
-void calculate_occurance(char* buff, long hist[], int size){
-    
+//checks the number of occurence of alphaberical letters and records into an array
+void calculate_occurance(char* buff, long hist[], int size){    
             for (int i = 0; i < size; i ++){
                     char ch = buff[i];
                     if (ch != '\0'){
                         int index = (int)ch - 65;
                         hist[index]+= 1;
-                    }
-                    
+                    }                   
              }
-    
 }
 
 int main(int argc, char *argv[]) {
@@ -53,10 +72,7 @@ int main(int argc, char *argv[]) {
         long filelen = 0;
         FILE *file_ptr = fopen(argv[1], "r");
         
-        if (file_ptr == NULL){
-            perror("Cannot open file: ");
-            return -1;
-        }
+
 
         /**
          * Compute the histogram using 2K buffers
